@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div>
       <Link to="/Analytics">
-        <Button>Hi</Button>
+        <Button>Analytics</Button>
       </Link>
     </div>
   );
