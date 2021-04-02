@@ -1,20 +1,18 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, } from "react-router-dom";
 import './App.css';
+import LoginScreen from './components/Login/LoginScreen';
+import AnalyticsScreen from "./components/Analytics/AnalyticsScreen";
+import HomeScreen from "./components/Home/HomeScreen";
 
-import LoginScreen from './components/Login/LoginScreen'
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <header className="App-header">
-        <Link className="showlink" to="/login">
-              Shows
-        </Link>
+      <div className="App">
         <Route path="/login" component={LoginScreen} />
-      </header>
-    </div>
+        <Route path="/home" component={HomeScreen} />
+        <Route path="/analytics" component={AnalyticsScreen} />
+      </div>
     </Router>
   );
 }
