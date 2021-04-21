@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, Row, Col, TextInput } from 'react-materialize';
-import Plus from '../plus.png'
+import Plus from '../../assets/plus.png';
 const Cards = (getCards, setCards) => {
     const onClickFunc = () => {
         console.log('fired')

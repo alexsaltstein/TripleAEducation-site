@@ -3,7 +3,7 @@ import { Image } from 'react'
 import 'materialize-css';
 import { Button, Card, Row, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import TripleALogo from '../tripleA.png'
+import TripleALogo from '../../assets/tripleA.png';
 
 const Header = () => {
   return (
