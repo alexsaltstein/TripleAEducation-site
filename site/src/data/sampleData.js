@@ -1,6 +1,6 @@
 export const CARDS = [
   {
-    side1: "hi",
-    side2: "bye"
+    side1: `explanation [ek-spluh-ney-shuhn]`,
+    side2: `the act or process of explaining`
   }
 ]

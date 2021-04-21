@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Widgets/Header';
 import { Button, Card, Row, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import CardSet from './CardSet';
 
 const MemoCards = () => {
     return (
@@ -13,6 +14,7 @@ const MemoCards = () => {
                     <Button>Create a new Card Set</Button>
                 </Link>
                 <p>Your Card Sets</p>
+                <CardSet/>
             </div>
         </div>
     )

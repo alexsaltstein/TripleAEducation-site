@@ -4,14 +4,14 @@ import LoginForm from './LoginForm';
 const LoginScreen = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-      <div style={styles.fomrContainer}>
+      <div style={styles.formContainer}>
         <LoginForm />
       </div>
     </div>
   )
 }
 const styles = {
-  fomrContainer: {
+  formContainer: {
     width: 300,
     background: 'white',
     padding: 20,
