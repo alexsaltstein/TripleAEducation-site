@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../Widgets/Header';
 
-const HomeScreen = () => {
+const HomeScreen = ({val}) => {
+  console.log(val);
   return (
     <div>
       <Header></Header>
@@ -16,4 +18,7 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen;
+const mapStateToProps = (state) => ({
+  val: state.toDoList
+})
+export default connect(mapStateToProps, null)(HomeScreen);

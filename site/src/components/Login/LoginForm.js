@@ -10,6 +10,7 @@ const LoginForm = () => {
     alert(username + ' ' + password);
     history.push('/home')
   }
+  
   return (
     <div class="row">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
