@@ -1,29 +1,20 @@
 import React from 'react';
 import { Button, Card, Row, Col, TextInput } from 'react-materialize';
-import Plus from '../../assets/plus.png';
-const Cards = (getCards, setCards) => {
-    const onClickFunc = () => {
-        console.log('fired')
-        return
-    }
-    const renderWidget = () => {
-        console.log("I was clicked");
-        const newComponents = [...getCards, Cards];
-        setCards(newComponents)
+
+const Cards = ({ id, cardVals }) => {
+    const [frontSide, setFrontSide] = React.useState('');
+    const [backSide, setBackSide] = React.useState('');
+    const saveFunction = () => {
+        cardVals[id] = { frontSide, backSide }
     }
     return (
-        <div style={{ margin: 15, display: 'flex', flexDirection: 'row' }}>
+        <div>
             <Card>
-                <TextInput placeholder='1st Side' />
-                <TextInput placeholder='2nd Side' />
+                <TextInput placeholder='Frontside' value={frontSide} onChange={(event) => setFrontSide(event.target.value)} />
+                <TextInput placeholder='Backside' value={backSide} onChange={(event) => setBackSide(event.target.value)} />
+                <Button onClick={() => saveFunction()} style={{ backgroundColor: 'gold' }}>Save</Button>
             </Card>
-            <div>
-                <img
-                    src={Plus}
-                    style={{ width: 75, height: 75, marginTop: 65 }}
-                    onClick={() => onClickFunc} />
-            </div>
-        </div>
+        </div >
     )
 }
 
