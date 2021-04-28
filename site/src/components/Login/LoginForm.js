@@ -7,7 +7,6 @@ const LoginForm = () => {
   const history = useHistory();
 
   const handleSubmit = () => {
-    alert(username + ' ' + password);
     history.push('/home')
   }
   
