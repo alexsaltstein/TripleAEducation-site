@@ -3,8 +3,10 @@ import Header from '../Widgets/Header';
 import { Button, Card, Row, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import CardSet from './CardSet';
+import {connect} from 'react-redux';
 
-const MemoCards = () => {
+const MemoCards = ({cardSets}) => {
+    console.log(cardSets);
     return (
         <div style={{ flex: 1 }}>
             <Header></Header>
@@ -20,4 +22,8 @@ const MemoCards = () => {
     )
 }
 
-export default MemoCards;
+const mapStateToProps = (state) => ({
+    cardSets: state.cardSets
+})
+
+export default connect(mapStateToProps,null)(MemoCards);

@@ -8,22 +8,26 @@ const CreateCards = () => {
     const [newCard, setNewCard] = React.useState(1)
     const [cardVals, setCardVals] = React.useState({})
     const [cardArr, setCardArr] = React.useState([])
-    const [array, setArray] = React.useState([]);
+    const [name, setName] = React.useState(null);
+    const [saved, setSaved] = React.useState(false);
     const onClickFunc = () => {
-        console.log(cardVals)
+        if (!name)
+            return;
         setNewCard(newCard + 1);
         if (cardArr.length - 1 !== newCard) {
             cardArr.push(
-                <Cards id={cardArr.length} cardVals={cardVals} setCardVals={cardVals} />)
+                <Cards id={cardArr.length} cardVals={cardVals} setSaved={setSaved} cardSetName={name}/>)
         }
     }
+
     return (
         <div>
             <Header></Header>
             <p>Create Cards</p>
+            {!saved && <TextInput style={{width: 300}} placeholder='Card Set name' value={name} onChange={(event) => setName(event.target.value)} />}
             <div style={{ margin: 15, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {cardArr.map((item, index) => (
-                    <div style={{ padding: 10 }}> {item}</div>
+                    <div style={{ padding: 10 }} key={index}> {item}</div>
                 ))
                 }
                 <div style={{ display: 'flex', flexDirection: 'column' }}>

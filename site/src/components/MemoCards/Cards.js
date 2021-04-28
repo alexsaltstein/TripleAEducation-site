@@ -1,11 +1,16 @@
 import React from 'react';
 import { Button, Card, Row, Col, TextInput } from 'react-materialize';
+import {connect} from 'react-redux';
+import { saveCardSet } from '../../actions';
 
-const Cards = ({ id, cardVals }) => {
+const Cards = ({ id, cardVals, cardSetName, setSaved, saveCardSet }) => {
     const [frontSide, setFrontSide] = React.useState('');
     const [backSide, setBackSide] = React.useState('');
     const saveFunction = () => {
+        console.log(cardSetName);
         cardVals[id] = { frontSide, backSide }
+        setSaved(true);
+        saveCardSet(cardSetName, cardVals);
     }
     return (
         <div>
@@ -18,4 +23,8 @@ const Cards = ({ id, cardVals }) => {
     )
 }
 
-export default Cards
+const actionCreators = {
+    saveCardSet
+}
+
+export default connect(null, actionCreators)(Cards);

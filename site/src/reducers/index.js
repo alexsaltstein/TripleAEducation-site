@@ -1,7 +1,8 @@
-import { ADD_TODO } from '../actions';
+import { ADD_TODO, SAVE_CARD_SET } from '../actions';
 
 const initialState = {
-  toDoList: []
+  toDoList: [],
+  cardSets: {}
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -17,6 +18,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         toDoList: newToDoList
       };
+    case SAVE_CARD_SET:
+      const name = action.values.name;
+      const cardSet = action.values.cardSet;
+      state.cardSets[name] = cardSet;
+      return state;
     default:
       return state;
   }
