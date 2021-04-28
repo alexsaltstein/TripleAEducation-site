@@ -7,16 +7,16 @@ import Plus from '../../assets/plus.png';
 const CreateCards = () => {
     const [newCard, setNewCard] = React.useState(1)
     const [cardVals, setCardVals] = React.useState({})
-    const [cardArr, setCardArr] = React.useState([])
-    const [name, setName] = React.useState(null);
     const [saved, setSaved] = React.useState(false);
+    const [name, setName] = React.useState(null);
+    const [cardArr, setCardArr] = React.useState([])
     const onClickFunc = () => {
         if (!name)
             return;
         setNewCard(newCard + 1);
         if (cardArr.length - 1 !== newCard) {
             cardArr.push(
-                <Cards id={cardArr.length} cardVals={cardVals} setSaved={setSaved} cardSetName={name}/>)
+                <Cards id={cardArr.length} cardVals={cardVals} setSaved={setSaved} cardSetName={name} />)
         }
     }
 
@@ -24,7 +24,7 @@ const CreateCards = () => {
         <div>
             <Header></Header>
             <p>Create Cards</p>
-            {!saved && <TextInput style={{width: 300}} placeholder='Card Set name' value={name} onChange={(event) => setName(event.target.value)} />}
+            {!saved && <TextInput style={{ width: 300 }} placeholder='Card Set name' value={name} onChange={(event) => setName(event.target.value)} />}
             <div style={{ margin: 15, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {cardArr.map((item, index) => (
                     <div style={{ padding: 10 }} key={index}> {item}</div>
