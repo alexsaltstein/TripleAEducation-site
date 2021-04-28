@@ -2,10 +2,10 @@ import React from 'react';
 import Header from '../Widgets/Header';
 import { Button, Card, Row, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import CardSet from './CardSet';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import CardLinks from './CardLinks';
 
-const MemoCards = ({cardSets}) => {
+const MemoCards = ({ cardSets }) => {
     console.log(cardSets);
     return (
         <div style={{ flex: 1 }}>
@@ -16,7 +16,10 @@ const MemoCards = ({cardSets}) => {
                     <Button>Create a new Card Set</Button>
                 </Link>
                 <p>Your Card Sets</p>
-                <CardSet/>
+                {Object.keys(cardSets).map(item => (
+                    <CardLinks name={item} deck={cardSets[item]}/>
+                ))}
+
             </div>
         </div>
     )
@@ -26,4 +29,4 @@ const mapStateToProps = (state) => ({
     cardSets: state.cardSets
 })
 
-export default connect(mapStateToProps,null)(MemoCards);
+export default connect(mapStateToProps, null)(MemoCards);
