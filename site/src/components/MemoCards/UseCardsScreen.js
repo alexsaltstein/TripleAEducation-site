@@ -13,7 +13,7 @@ const CardDisplay = ({ data }) => {
 }
 
 const UseCardsScreen = ({ cardSets }) => {
-  const name = window.location.href.split('=')[1];
+  const name = decodeURIComponent(window.location.href.split('=')[1]);
   
   return (
     <div>
