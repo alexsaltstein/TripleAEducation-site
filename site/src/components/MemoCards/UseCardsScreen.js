@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button } from 'react-materialize';
+import { Link } from 'react-router-dom';
 import Header from '../Widgets/Header';
 
 const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
@@ -40,7 +41,9 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
             </div>
           </div>}
       </div>
-      {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Reset Cards</Button>}
+      <Link to='/analytics'>
+        {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Reset Cards</Button>}
+      </Link>
     </div>
   )
 }
