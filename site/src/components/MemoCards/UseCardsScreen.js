@@ -5,23 +5,26 @@ import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Header from '../Widgets/Header';
 import { interactWithCard } from '../../actions';
+import { useStopwatch } from 'react-timer-hook';
 
-const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard }) => {
+const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard, start, pause }) => {
   const [toggled, setToggled] = React.useState(true)
-  const [reset, setReset] = React.useState(null)
+  const [showAnalyticsButton, setShowAnalyticsButton] = React.useState(false)
 
   const onButtonClick = (event, type) => {
     // event.stopPropagation();
+    if (Object.keys(cardSets[name]).length === index) {
+      pause();
+      setShowAnalyticsButton(true);
+    }
     if (Object.keys(cardSets[name]).length !== index) {
       setIndex(index + 1)
-    } else {
-      setReset(true)
     }
     interactWithCard(name, index, type === 'check');
   }
   return (
     <div>
-      <div onClick={() => setToggled(!toggled)} style={styles.cardContainer}>
+      <div onClick={() => { setToggled(!toggled) }} style={styles.cardContainer}>
         {toggled ?
           (<div>
             <p style={styles.label}>F</p>
@@ -38,7 +41,7 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard }
           </div>}
       </div>
       <Link to='/analytics'>
-        {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Check Analytics</Button>}
+        {showAnalyticsButton && <Button onClick={() => { setIndex(1); setShowAnalyticsButton(false) }}>Check Analytics</Button>}
       </Link>
     </div>
   )
@@ -46,15 +49,33 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard }
 
 const UseCardsScreen = ({ cardSets, interactWithCard }) => {
   const [index, setIndex] = React.useState(1);
+  const {
+    seconds,
+    minutes,
+    hours,
+    start,
+    reset,
+    pause,
+  } = useStopwatch({ autoStart: false });
 
   const name = decodeURIComponent(window.location.href.split('=')[1]);
-
   return (
     <div>
       <Header />
       {cardSets[name] ?
         <div>
           <p style={{ fontWeight: 'bold', fontSize: 32, userSelect: 'none' }}>Card Set Name: {name}</p>
+          <div>
+            <div style={{ fontSize: 40, }}>
+              <span>
+                <span>{hours < 10 && '0'}{hours}</span>:<span>{minutes < 10 && '0'}{minutes}</span>:<span>{seconds < 10 && '0'}{seconds}</span>
+              </span>
+              <div>
+                <Button onClick={() => { start(); }}>start</Button>
+                <Button onClick={() => { setIndex(1); reset(); pause(); }}>reset</Button>
+              </div>
+            </div>
+          </div>
           <p style={{ fontWeight: 'bold', fontSize: 24, userSelect: 'none' }} >{index} / {Object.keys(cardSets[name]).length}</p>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {Object.keys(cardSets[name]).slice(index - 1, index).map((item) => {
@@ -65,13 +86,15 @@ const UseCardsScreen = ({ cardSets, interactWithCard }) => {
                   setIndex={setIndex}
                   name={name}
                   cardSets={cardSets}
+                  pause={pause}
+                  start={start}
                   interactWithCard={interactWithCard}
                 />
               )
             })}
           </div>
         </div> :
-        <div style={{height: 200, padding: 20, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div style={{ height: 200, padding: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h3>No card set with that name found!</h3>
         </div>
       }
