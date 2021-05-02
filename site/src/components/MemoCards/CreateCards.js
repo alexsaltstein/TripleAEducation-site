@@ -10,9 +10,12 @@ const CreateCards = () => {
     const [saved, setSaved] = React.useState(false);
     const [name, setName] = React.useState(null);
     const [cardArr, setCardArr] = React.useState([])
+    const [errorText, setErrorText] = React.useState(false)
     const onClickFunc = () => {
-        if (!name)
-            return;
+        if (!name) {
+            setErrorText(true)
+            return
+        }
         setNewCard(newCard + 1);
         if (cardArr.length - 1 !== newCard) {
             cardArr.push(
@@ -24,7 +27,8 @@ const CreateCards = () => {
         <div>
             <Header></Header>
             <p>Create Cards</p>
-            {!saved && <TextInput style={{ width: 300 }} placeholder='Card Set name' value={name} onChange={(event) => setName(event.target.value)} />}
+            {!saved && <TextInput style={{ width: 300 }} placeholder='Card Set name' value={name} onChange={(event) => { setErrorText(false); setName(event.target.value) }} />}
+            {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a Card set name first</p>}
             <div style={{ margin: 15, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {cardArr.map((item, index) => (
                     <div style={{ padding: 10 }} key={index}> {item}</div>

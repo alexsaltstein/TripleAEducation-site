@@ -8,8 +8,13 @@ import App from './App';
 const store = createStore(rootReducer);
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <div style={{
+    backgroundColor: '#FFF5EE', height: '100vh',
+    minHeight: '100vh'
+  }}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </div >,
   document.getElementById('root')
 );

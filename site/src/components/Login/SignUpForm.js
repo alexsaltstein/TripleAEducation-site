@@ -3,14 +3,15 @@ import { Button } from 'react-materialize';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
-const LoginForm = () => {
+const SignUpForm = () => {
+  const [email, setEmail] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errorText, setErrorText] = React.useState(false)
   const history = useHistory();
 
   const handleSubmit = (event) => {
-    if (username === '' || password === '') {
+    if (username === '' || password === '' || email === '') {
       event.preventDefault()
       setErrorText(true);
     } else {
@@ -21,10 +22,16 @@ const LoginForm = () => {
   return (
     <div class="row">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <b>Welcome to Triple A Education!</b>
+        <b>Create your account!</b>
         <i>Please enter your account details.</i>
       </div>
       <form class="col s12" onSubmit={(event) => handleSubmit(event)}>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type='email' class="validate" value={email} onChange={(event) => setEmail(event.target.value)}></input>
+            <label for="email">Email</label>
+          </div>
+        </div>
         <div class="row">
           <div class="input-field col s12">
             <input id="username" type="text" class="validate" value={username} onChange={(event) => setUsername(event.target.value)}></input>
@@ -37,14 +44,9 @@ const LoginForm = () => {
             <label for="password">Password</label>
           </div>
         </div>
-        {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a username and/or password</p>}
+        {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a valid username and/or password</p>}
         <div style={{ flexDirection: 'column', }}>
-          <input type="submit" value="LOGIN" style={styles.submitButton} />
-          <div style={{ margin: 10 }}>
-            <Link to='/signup'>
-              <Button style={styles.submitButton}>Sign Up</Button>
-            </Link>
-          </div>
+          <input type="submit" value="SIGN UP" style={styles.submitButton2} />
         </div>
       </form>
     </div >
@@ -63,7 +65,15 @@ const styles = {
     fontSize: 20,
     borderRadius: 3,
     boxShadow: '1px 2px 3px #9E9E9E'
+  },
+  submitButton2: {
+    background: '#66bb6a',
+    border: 'none',
+    color: 'white',
+    fontSize: 20,
+    paddingBottom: 5,
+    boxShadow: '1px 2px 3px #9E9E9E'
   }
 }
 
-export default LoginForm;
+export default SignUpForm;

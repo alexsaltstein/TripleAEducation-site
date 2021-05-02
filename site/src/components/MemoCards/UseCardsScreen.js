@@ -26,7 +26,7 @@ const UseCardsScreen = ({ cardSets }) => {
   return (
     <div>
       <Header />
-      <p style={{ fontWeight: 'bold', fontSize: 32, userSelect: 'none' }}>MemoCard Name: {name}</p>
+      <p style={{ fontWeight: 'bold', fontSize: 32, userSelect: 'none' }}>Card Set Name: {name}</p>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {Object.keys(cardSets[name]).map((item) => {
           console.log(item);
@@ -47,7 +47,8 @@ const styles = {
     padding: 20,
     margin: 15,
     borderRadius: 10,
-    boxShadow: "2px 3px 5px #9E9E9E"
+    boxShadow: "2px 3px 5px #9E9E9E",
+    overflowWrap: 'break-word'
   },
   label: {
     textAlign: 'left',
