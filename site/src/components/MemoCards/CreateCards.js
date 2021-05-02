@@ -44,7 +44,7 @@ const CreateCards = () => {
                         onClick={() => onClickFunc()} />
                 </div>
             </div>
-            {cardArr.length !== 0 && <Button onClick={() => { setName(null); setSaved(false); setCardArr([]) }}>Create another Cardset</Button>}
+            {cardArr.length !== 0 && <Button onClick={() => { setName(null); setSaved(false); setCardArr([]); setNewCard(1); }}>Create another Cardset</Button>}
         </div>
     )
 }
