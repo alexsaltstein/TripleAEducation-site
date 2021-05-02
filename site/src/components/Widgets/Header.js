@@ -7,7 +7,7 @@ import TripleALogo from '../../assets/tripleA.png';
 
 const Header = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', margin: 10 }}>
+    <div style={{ display: 'flex', flexDirection: 'row', margin: 10, }}>
       <img style={{ height: 50, width: 50 }} src={TripleALogo} />
       <Link to="/home">
         <Button style={{ margin: 5 }}>Home</Button>

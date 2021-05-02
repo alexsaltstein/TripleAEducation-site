@@ -14,9 +14,10 @@ export function addToDo(title) {
 export const saveCardSet = (name, cardSet) => {
   return {
     type: SAVE_CARD_SET,
-    values:{
+    values: {
       name,
-      cardSet
+      cardSet,
+      check: null
     }
   }
 }
