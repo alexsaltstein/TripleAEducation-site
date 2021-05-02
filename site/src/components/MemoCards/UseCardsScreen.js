@@ -71,7 +71,7 @@ const UseCardsScreen = ({ cardSets, interactWithCard }) => {
                 <span>{hours < 10 && '0'}{hours}</span>:<span>{minutes < 10 && '0'}{minutes}</span>:<span>{seconds < 10 && '0'}{seconds}</span>
               </span>
               <div>
-                <Button onClick={() => { start(); }}>start</Button>
+                <Button style={{ marginRight: 10 }} onClick={() => { start(); }}>start</Button>
                 <Button onClick={() => { setIndex(1); reset(); pause(); }}>reset</Button>
               </div>
             </div>
