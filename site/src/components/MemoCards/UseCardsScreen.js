@@ -38,7 +38,7 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard }
           </div>}
       </div>
       <Link to='/analytics'>
-        {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Reset Cards</Button>}
+        {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Check Analytics</Button>}
       </Link>
     </div>
   )

@@ -11,7 +11,7 @@ const MemoCards = ({ cardSets }) => {
         <div style={{ flex: 1 }}>
             <Header></Header>
             <u>
-                <p style={{ fontSize: 32, fontWeight: 'bold' }}>Triple A Educations Memorization Card Helper!</p>
+                <p style={{ fontSize: 32, fontWeight: 'bold' }}>Triple A Education's Memorization Card Helper!</p>
             </u>
             <div style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto' }}>
                 <p style={{ fontSize: 24, textAlign: 'center', }}>The goal of this website is to allow you to create "MemoCards" which will help you memorize and/or learn whatever you put onto the cards! </p>
