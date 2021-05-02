@@ -18,7 +18,8 @@ const styles = {
     margin: 15,
     borderRadius: 10,
     boxShadow: "2px 3px 5px #9E9E9E",
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
+    cursor: 'pointer'
   },
   data: {
     textAlign: 'center',

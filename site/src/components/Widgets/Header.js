@@ -15,9 +15,9 @@ const Header = () => {
       <Link to="/analytics">
         <Button style={{ margin: 5 }}>Analytics</Button>
       </Link>
-      <Link to="/">
+      <a href="/">
         <Button style={{ margin: 5 }}>Logout</Button>
-      </Link>
+      </a>
     </div>
   );
 }
