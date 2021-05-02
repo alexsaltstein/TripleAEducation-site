@@ -9,7 +9,7 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
   const [reset, setReset] = React.useState(null)
 
   const onButtonClick = (event, type) => {
-    event.stopPropagation();
+    // event.stopPropagation();
     if (Object.keys(cardSets[name]).length !== index) {
       setIndex(index + 1)
     } else {
@@ -34,11 +34,11 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
           <div>
             <p style={styles.label}>B</p>
             <p style={styles.data}>{data.side2}</p>
+            <div style={{ display: 'flex', alignItems: 'right' }}>
+              <Button onClick={(event) => onButtonClick(event, 'check')} style={{ backgroundColor: 'green', margin: 2 }}>✔</Button>
+              <Button onClick={(event) => onButtonClick(event, 'x')} style={{ backgroundColor: 'red', margin: 2 }}>X</Button>
+            </div>
           </div>}
-        <div style={{ display: 'flex', alignItems: 'right' }}>
-          <Button onClick={(event) => onButtonClick(event, 'check')} style={{ backgroundColor: 'green', margin: 2 }}>✔</Button>
-          <Button onClick={(event) => onButtonClick(event, 'x')} style={{ backgroundColor: 'red', margin: 2 }}>X</Button>
-        </div>
       </div>
       {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Reset Cards</Button>}
     </div>
