@@ -74,7 +74,7 @@ const AnalyticsScreen = ({ cardSets }) => {
               </Bar>
             </BarChart>
           </div> :
-          <p>No data found!</p>}
+          <h4 style={{fontSize: 30}}>No data found!</h4>}
       </div>
     </div>
   )

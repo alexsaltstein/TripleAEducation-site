@@ -52,22 +52,29 @@ const UseCardsScreen = ({ cardSets, interactWithCard }) => {
   return (
     <div>
       <Header />
-      <p style={{ fontWeight: 'bold', fontSize: 32, userSelect: 'none' }}>Card Set Name: {name}</p>
-      <p style={{ fontWeight: 'bold', fontSize: 24, userSelect: 'none' }} >{index} / {Object.keys(cardSets[name]).length}</p>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        {Object.keys(cardSets[name]).slice(index - 1, index).map((item) => {
-          return (
-            <CardDisplay
-              data={{ side1: cardSets[name][item].frontSide, side2: cardSets[name][item].backSide }}
-              index={index}
-              setIndex={setIndex}
-              name={name}
-              cardSets={cardSets}
-              interactWithCard={interactWithCard}
-            />
-          )
-        })}
-      </div>
+      {cardSets[name] ?
+        <div>
+          <p style={{ fontWeight: 'bold', fontSize: 32, userSelect: 'none' }}>Card Set Name: {name}</p>
+          <p style={{ fontWeight: 'bold', fontSize: 24, userSelect: 'none' }} >{index} / {Object.keys(cardSets[name]).length}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {Object.keys(cardSets[name]).slice(index - 1, index).map((item) => {
+              return (
+                <CardDisplay
+                  data={{ side1: cardSets[name][item].frontSide, side2: cardSets[name][item].backSide }}
+                  index={index}
+                  setIndex={setIndex}
+                  name={name}
+                  cardSets={cardSets}
+                  interactWithCard={interactWithCard}
+                />
+              )
+            })}
+          </div>
+        </div> :
+        <div style={{height: 200, padding: 20, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <h3>No card set with that name found!</h3>
+        </div>
+      }
     </div>
   )
 }
