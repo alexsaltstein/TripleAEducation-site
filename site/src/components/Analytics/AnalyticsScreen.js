@@ -14,13 +14,13 @@ const AnalyticsScreen = ({ cardSets }) => {
       let incorrect = 0;
       Object.keys(cardSets[val]).forEach(card => {
         const gotItRight = cardSets[val][card].gotItRight
-        if(gotItRight){
+        if (gotItRight) {
           correct++;
-        }else if (!gotItRight && gotItRight !== undefined){
+        } else if (!gotItRight && gotItRight !== undefined) {
           incorrect++;
         }
       })
-      newData.push({name:val, correct, incorrect});
+      newData.push({ name: val, correct, incorrect });
     });
     setData(newData);
 
@@ -36,7 +36,9 @@ const AnalyticsScreen = ({ cardSets }) => {
     <div>
       <Header></Header>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-        <p>Analytics Screen</p>
+        <u>
+          <p style={{ fontSize: 32, fontWeight: 'bold' }}>Analytics Screen</p>
+        </u>
         {(data && data.length > 0) ?
           <BarChart width={width} height={400} data={data}>
             <XAxis dataKey="name" />

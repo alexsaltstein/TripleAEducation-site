@@ -26,7 +26,9 @@ const CreateCards = () => {
     return (
         <div>
             <Header></Header>
-            <p>Create Cards</p>
+            <u>
+                <p style={{ fontWeight: 'bold', fontSize: 32 }}>Create Cards</p>
+            </u>
             {!saved && <TextInput style={{ width: 300 }} placeholder='Card Set name' value={name} onChange={(event) => { setErrorText(false); setName(event.target.value) }} />}
             {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a Card set name first</p>}
             <div style={{ margin: 15, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -42,6 +44,7 @@ const CreateCards = () => {
                         onClick={() => onClickFunc()} />
                 </div>
             </div>
+            {cardArr.length !== 0 && <Button onClick={() => { setName(null); setSaved(false); setCardArr([]) }}>Create another Cardset</Button>}
         </div>
     )
 }
