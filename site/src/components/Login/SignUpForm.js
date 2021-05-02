@@ -48,6 +48,8 @@ const SignUpForm = () => {
         <div style={{ flexDirection: 'column', }}>
           <input type="submit" value="SIGN UP" style={styles.submitButton2} />
         </div>
+        <br></br>
+        <a href="/">Already have an account?</a>
       </form>
     </div >
   )
