@@ -4,25 +4,43 @@ import { connect } from 'react-redux';
 import { Button } from 'react-materialize';
 import Header from '../Widgets/Header';
 
-const CardDisplay = ({ data, index, setIndex }) => {
+const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
   const [toggled, setToggled] = React.useState(true)
-  const [cardAnalytics, setCardAnalytics] = React.useState(null)
+  const [reset, setReset] = React.useState(null)
+
+  const onButtonClick = (event, type) => {
+    event.stopPropagation();
+    if (Object.keys(cardSets[name]).length !== index) {
+      setIndex(index + 1)
+    } else {
+      setReset(true)
+    }
+    if (type == 'check') {
+      // add true val to redux store
+    }
+    if (type == 'x') {
+      // add true val to redux store
+    }
+  }
   return (
-    <div onClick={() => setToggled(!toggled)} style={styles.cardContainer}>
-      {toggled ?
-        (<div>
-          <p style={styles.label}>F</p>
-          <p style={styles.data}>{data.side1}</p>
-        </div>)
-        :
-        <div>
-          <p style={styles.label}>B</p>
-          <p style={styles.data}>{data.side2}</p>
-        </div>}
-      <div style={{ display: 'flex', alignItems: 'right' }}>
-        <Button onClick={() => setIndex(index + 1)} style={{ backgroundColor: 'green', margin: 2 }}>✔</Button>
-        <Button style={{ backgroundColor: 'red', margin: 2 }}>X</Button>
+    <div>
+      <div onClick={() => setToggled(!toggled)} style={styles.cardContainer}>
+        {toggled ?
+          (<div>
+            <p style={styles.label}>F</p>
+            <p style={styles.data}>{data.side1}</p>
+          </div>)
+          :
+          <div>
+            <p style={styles.label}>B</p>
+            <p style={styles.data}>{data.side2}</p>
+          </div>}
+        <div style={{ display: 'flex', alignItems: 'right' }}>
+          <Button onClick={(event) => onButtonClick(event, 'check')} style={{ backgroundColor: 'green', margin: 2 }}>✔</Button>
+          <Button onClick={(event) => onButtonClick(event, 'x')} style={{ backgroundColor: 'red', margin: 2 }}>X</Button>
+        </div>
       </div>
+      {reset && <Button onClick={() => { setIndex(1); setReset(false) }}>Reset Cards</Button>}
     </div>
   )
 }
@@ -44,7 +62,10 @@ const UseCardsScreen = ({ cardSets }) => {
             <CardDisplay
               data={{ side1: cardSets[name][item].frontSide, side2: cardSets[name][item].backSide }}
               index={index}
-              setIndex={setIndex} />
+              setIndex={setIndex}
+              name={name}
+              cardSets={cardSets}
+            />
           )
         })}
       </div>
