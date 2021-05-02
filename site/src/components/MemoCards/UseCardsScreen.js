@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';

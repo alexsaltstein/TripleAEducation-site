@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Widgets/Header';
-import { Button, Card, Row, Col } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardLinks from './CardLinks';

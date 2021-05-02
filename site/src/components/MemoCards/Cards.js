@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Row, Col, TextInput } from 'react-materialize';
+import { Button, Card, TextInput } from 'react-materialize';
 import { connect } from 'react-redux';
 import { saveCardSet } from '../../actions';
 

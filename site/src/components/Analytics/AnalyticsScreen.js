@@ -31,7 +31,7 @@ const AnalyticsScreen = ({ cardSets }) => {
     }
 
     window.addEventListener('resize', handleResize)
-  }, []);
+  }, [width, cardSets]);
 
   return (
     <div>

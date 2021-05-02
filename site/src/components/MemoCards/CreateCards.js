@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../Widgets/Header';
 import Cards from './Cards'
-import { Button, Card, Row, Col, TextInput } from 'react-materialize';
+import { Button, TextInput } from 'react-materialize';
 import Plus from '../../assets/plus.png';
 
 const CreateCards = () => {
     const [newCard, setNewCard] = React.useState(1)
-    const [cardVals, setCardVals] = React.useState({})
+    const [cardVals, ] = React.useState({})
     const [saved, setSaved] = React.useState(false);
     const [name, setName] = React.useState(null);
     const [cardArr, setCardArr] = React.useState([])
