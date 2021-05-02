@@ -40,11 +40,10 @@ const LoginForm = () => {
         {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a username and/or password</p>}
         <div style={{ flexDirection: 'column', }}>
           <input type="submit" value="LOGIN" style={styles.submitButton} />
-          <div style={{ margin: 10 }}>
-            <Link to='/signup'>
-              <Button style={styles.submitButton}>Sign Up</Button>
-            </Link>
-          </div>
+          <div style={{ height: 10 }}></div>
+          <Link to='/signup'>
+            <Button style={styles.signUpButton}>Sign Up</Button>
+          </Link>
         </div>
       </form>
     </div >
@@ -60,6 +59,14 @@ const styles = {
     border: 'none',
     color: 'white',
     padding: '5px 10px',
+    fontSize: 20,
+    borderRadius: 3,
+    boxShadow: '1px 2px 3px #9E9E9E'
+  },
+  signUpButton: {
+    background: '#66bb6a',
+    border: 'none',
+    color: 'white',
     fontSize: 20,
     borderRadius: 3,
     boxShadow: '1px 2px 3px #9E9E9E'

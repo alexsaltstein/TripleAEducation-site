@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button } from 'react-materialize';
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom'
 
 const SignUpForm = () => {
   const [email, setEmail] = React.useState('');
@@ -45,8 +43,8 @@ const SignUpForm = () => {
           </div>
         </div>
         {errorText && <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Please enter a valid username and/or password</p>}
-        <div style={{ flexDirection: 'column', }}>
-          <input type="submit" value="SIGN UP" style={styles.submitButton2} />
+        <div>
+          <input type="submit" value="SIGN UP" style={styles.submitButton} />
         </div>
         <br></br>
         <a href="/">Already have an account?</a>
@@ -66,14 +64,6 @@ const styles = {
     padding: '5px 10px',
     fontSize: 20,
     borderRadius: 3,
-    boxShadow: '1px 2px 3px #9E9E9E'
-  },
-  submitButton2: {
-    background: '#66bb6a',
-    border: 'none',
-    color: 'white',
-    fontSize: 20,
-    paddingBottom: 5,
     boxShadow: '1px 2px 3px #9E9E9E'
   }
 }
