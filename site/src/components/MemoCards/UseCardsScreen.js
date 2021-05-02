@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Header from '../Widgets/Header';
+import { interactWithCard } from '../../actions';
 
-const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
+const CardDisplay = ({ data, index, setIndex, name, cardSets, interactWithCard }) => {
   const [toggled, setToggled] = React.useState(true)
   const [reset, setReset] = React.useState(null)
 
@@ -16,12 +17,7 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
     } else {
       setReset(true)
     }
-    if (type == 'check') {
-      // add true val to redux store
-    }
-    if (type == 'x') {
-      // add true val to redux store
-    }
+    interactWithCard(name, index, type === 'check');
   }
   return (
     <div>
@@ -48,7 +44,7 @@ const CardDisplay = ({ data, index, setIndex, name, cardSets }) => {
   )
 }
 
-const UseCardsScreen = ({ cardSets }) => {
+const UseCardsScreen = ({ cardSets, interactWithCard }) => {
   const [index, setIndex] = React.useState(1);
 
   const name = decodeURIComponent(window.location.href.split('=')[1]);
@@ -60,7 +56,6 @@ const UseCardsScreen = ({ cardSets }) => {
       <p style={{ fontWeight: 'bold', fontSize: 24, userSelect: 'none' }} >{index} / {Object.keys(cardSets[name]).length}</p>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {Object.keys(cardSets[name]).slice(index - 1, index).map((item) => {
-          console.log(item);
           return (
             <CardDisplay
               data={{ side1: cardSets[name][item].frontSide, side2: cardSets[name][item].backSide }}
@@ -68,6 +63,7 @@ const UseCardsScreen = ({ cardSets }) => {
               setIndex={setIndex}
               name={name}
               cardSets={cardSets}
+              interactWithCard={interactWithCard}
             />
           )
         })}
@@ -103,4 +99,8 @@ const mapStateToProps = (state) => ({
   cardSets: state.cardSets
 })
 
-export default connect(mapStateToProps, null)(UseCardsScreen);
+const actionCreators = {
+  interactWithCard,
+};
+
+export default connect(mapStateToProps, actionCreators)(UseCardsScreen);

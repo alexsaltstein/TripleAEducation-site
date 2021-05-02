@@ -1,5 +1,6 @@
 export const ADD_TODO = 'ADD_TODO';
 export const SAVE_CARD_SET = 'SAVE_CARD_SET';
+export const INTERACT_WITH_CARD = 'INTERACT_WITH_CARD';
 
 export function addToDo(title) {
   return {
@@ -16,8 +17,18 @@ export const saveCardSet = (name, cardSet) => {
     type: SAVE_CARD_SET,
     values: {
       name,
-      cardSet,
-      check: null
+      cardSet
+    }
+  }
+}
+
+export const interactWithCard = (name, cardId, gotItRight) => {
+  return {
+    type: INTERACT_WITH_CARD,
+    values: {
+      name,
+      cardId,
+      gotItRight
     }
   }
 }
